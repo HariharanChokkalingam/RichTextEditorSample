@@ -6,101 +6,96 @@
              xmlns:popup="clr-namespace:Syncfusion.Maui.Popup;assembly=Syncfusion.Maui.Popup"
              xmlns:local="clr-namespace:RichTextEditorSample"
              x:Class="RichTextEditorSample.CustomRichTextEditor">
-             <ContentPage.Resources>
-                <Style TargetType="buttons:SfButton">
-                    <Setter Property="Background" Value="#F1F1F1" />
-                    <Setter Property="TextColor" Value="Black" />
-                    <Setter Property="WidthRequest" Value="50" />
-                    <Setter Property="HeightRequest" Value="50" />
-                    <Setter Property="CornerRadius" Value="0" />
-                    <Setter Property="IsCheckable" Value="True"/>
-                    <Setter Property="StrokeThickness" Value="1" />
-                    <Setter Property="Stroke" Value="Transparent" />
-                    <Setter Property="VisualStateManager.VisualStateGroups">
-                        <VisualStateGroupList>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="Hovered">
-                                    <VisualState.Setters>
-                                        <Setter Property="Stroke" Value="Black" />
-                                        <Setter Property="StrokeThickness" Value="2" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                               
-                            </VisualStateGroup>
-                        </VisualStateGroupList>
-                    </Setter>
-                </Style>
-            </ContentPage.Resources>
-        
-           <StackLayout Padding="10">
-              <!-- Toolbar with additional formatting options -->
-              <HorizontalStackLayout Background="#F1F1F1" Spacing="2">
-                  <buttons:SfButton Text="B" Clicked="OnBoldClicked" />
-                  <buttons:SfButton Text="I" Clicked="OnItalicClicked" />
-                  <buttons:SfButton Text="U" Clicked="OnUnderlineClicked" />
-                  <buttons:SfButton Text="S" Clicked="OnStrikethroughClicked" />
+    
+    <ContentPage.Resources>
+        <Style TargetType="buttons:SfButton">
+            <Setter Property="Background" Value="#F1F1F1" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="WidthRequest" Value="50" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="CornerRadius" Value="0" />
+            <Setter Property="IsCheckable" Value="True"/>
+            <Setter Property="StrokeThickness" Value="1" />
+            <Setter Property="Stroke" Value="Transparent" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Hovered">
+                            <VisualState.Setters>
+                                <Setter Property="Stroke" Value="Black" />
+                                <Setter Property="StrokeThickness" Value="2" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
 
-                <buttons:SfButton Text="A" Clicked="OnTextColorClicked" />
-                <buttons:SfButton Text="A🖌️" Clicked="OnBackgroundColorClicked" />
-        
-                  <syncfusion:SfComboBox x:Name="fontSizeComboBox"
-                                        SelectedIndex="1"
-                                        IsClearButtonVisible="False" 
-                                        Placeholder="Font Size"
-                                        SelectionChanged="OnFontSizeChanged"/>
-                  <syncfusion:SfComboBox x:Name="fontFamilyComboBox" 
-                                        SelectedIndex="1"
-                                        IsClearButtonVisible="False"
-                                        Placeholder="Font"
-                                        SelectionChanged="OnFontFamilyChanged"/>
-        
-                  <buttons:SfButton Text="X₂" Clicked="OnSubScriptClicked" />
-                  <buttons:SfButton Text="X²" Clicked="OnSuperScriptClicked" />
-        
-                  <buttons:SfButton Text="•" Clicked="OnBulletListClicked" />
-                  <buttons:SfButton Text="1." Clicked="OnNumberListClicked" />
-        
-                  <syncfusion:SfComboBox x:Name="alignmentComboBox"
-                                        SelectedIndex="0"
-                                        IsClearButtonVisible="False"
-                                        Placeholder="Align"
-                                        SelectionChanged="OnAlignmentChanged"/>
-        
-                  <buttons:SfButton Text="Link" Clicked="OnAddLinkClicked"  />
-                  <buttons:SfButton Text="🗑" Clicked="OnClearFormatClicked" />
-                  <buttons:SfButton Text="🔄" Clicked="OnRedoClicked" />
-                  <buttons:SfButton Text="↩️" Clicked="OnUndoClicked" />
-              </HorizontalStackLayout>
-        
-              <!-- ... existing code ... -->
-                <!-- WebView for rich text editing -->
-              <WebView x:Name="richEditorWebView"  HeightRequest="400"/>
+    <StackLayout Padding="10">
+        <!-- Toolbar with formatting options -->
+        <HorizontalStackLayout Background="#F1F1F1" Spacing="2">
+            <buttons:SfButton Text="B" Clicked="OnBoldClicked" />
+            <buttons:SfButton Text="I" Clicked="OnItalicClicked" />
+            <buttons:SfButton Text="U" Clicked="OnUnderlineClicked" />
+            <buttons:SfButton Text="S" Clicked="OnStrikethroughClicked" />
 
-                
-              <popup:SfPopup x:Name="linkPopup" BackgroundColor="White"  HeaderTitle ="Insert Link" WidthRequest="320"   HeightRequest="320"
-              IsOpen="False"  StaysOpen="False">
+            <buttons:SfButton Text="A" Clicked="OnTextColorClicked" />
+            <buttons:SfButton Text="A🖌️" Clicked="OnBackgroundColorClicked" />
 
-              <popup:SfPopup.HeaderTemplate>
+            <syncfusion:SfComboBox x:Name="fontSizeComboBox"
+                                   SelectedIndex="1"
+                                   IsClearButtonVisible="False" 
+                                   Placeholder="Font Size"
+                                   SelectionChanged="OnFontSizeChanged"/>
+            <syncfusion:SfComboBox x:Name="fontFamilyComboBox" 
+                                   SelectedIndex="1"
+                                   IsClearButtonVisible="False"
+                                   Placeholder="Font"
+                                   SelectionChanged="OnFontFamilyChanged"/>
+
+            <buttons:SfButton Text="X₂" Clicked="OnSubScriptClicked" />
+            <buttons:SfButton Text="X²" Clicked="OnSuperScriptClicked" />
+
+            <buttons:SfButton Text="•" Clicked="OnBulletListClicked" />
+            <buttons:SfButton Text="1." Clicked="OnNumberListClicked" />
+
+            <syncfusion:SfComboBox x:Name="alignmentComboBox"
+                                   SelectedIndex="0"
+                                   IsClearButtonVisible="False"
+                                   Placeholder="Align"
+                                   SelectionChanged="OnAlignmentChanged"/>
+
+            <buttons:SfButton Text="Link" Clicked="OnAddLinkClicked"  />
+            <buttons:SfButton Text="Table" Clicked="OnInsertTableClicked" />
+            <buttons:SfButton Text="Media" Clicked="OnInsertMediaClicked" />
+            <buttons:SfButton Text="🗑" Clicked="OnClearFormatClicked" />
+            <buttons:SfButton Text="🔄" Clicked="OnRedoClicked" />
+            <buttons:SfButton Text="↩️" Clicked="OnUndoClicked" />
+        </HorizontalStackLayout>
+
+        <!-- WebView for rich text editing -->
+        <WebView x:Name="richEditorWebView"  HeightRequest="400"/>
+
+        <!-- Popup for inserting links -->
+        <popup:SfPopup x:Name="linkPopup" BackgroundColor="White"  HeaderTitle ="Insert Link" WidthRequest="320"   HeightRequest="320"
+                       IsOpen="False"  StaysOpen="False">
+            <popup:SfPopup.HeaderTemplate>
                 <DataTemplate>
                     <Label Text="Insert Link" TextColor="Black" FontAttributes="Bold" FontSize="15" Margin="20,10,0,0" />
-
                 </DataTemplate>
+            </popup:SfPopup.HeaderTemplate>
 
-              </popup:SfPopup.HeaderTemplate>
-
-             
-
-              <popup:SfPopup.ContentTemplate>
+            <popup:SfPopup.ContentTemplate>
                 <DataTemplate>
                     <StackLayout Padding="20" BackgroundColor="White" Spacing="10" HeightRequest="300" >
-
                         <VerticalStackLayout>
                             <Label Text="URL" TextColor="Black" FontAttributes="Bold"  Margin="0,0,0,10" />
                             <Entry x:Name="urlEntry" TextColor="Black" Placeholder="http://www.example.com" Margin="0,0,0,10"/>
                         </VerticalStackLayout>
 
-                         <VerticalStackLayout>
+                        <VerticalStackLayout>
                             <Label Text="Display Text" TextColor="Black" FontAttributes="Bold" Margin="0,0,0,10" />
                             <Entry x:Name="displayTextEntry" TextColor="Black" Placeholder="Display Text" Margin="0,0,0,20"/>
                         </VerticalStackLayout>
@@ -111,9 +106,7 @@
                         </Grid>
                     </StackLayout>
                 </DataTemplate>
-                
-              </popup:SfPopup.ContentTemplate>
- 
-                </popup:SfPopup>
-     </StackLayout>
+            </popup:SfPopup.ContentTemplate>
+        </popup:SfPopup>
+    </StackLayout>
 </ContentView>
